@@ -29,6 +29,6 @@ class PostRepoOnJDBCImpl extends PostRepository {
     PostDAO.findAllWithLimitOffset(limit = pageSize, offset, orderings)
   }
 
-  override def getPostByID(id: Long): Option[Post] =
-    PostDAO.findById(PostID(id))
+  override def getPostByID(id: Long): Option[Post] = PostDAO.findById(PostID(id))
+
 }

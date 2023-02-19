@@ -8,6 +8,8 @@ import org.joda.time.format.DateTimeFormat
 import play.api.libs.json.Json
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
 
+import java.nio.file.{Files, Paths}
+import java.util.UUID
 import javax.inject.{Inject, Singleton}
 import scala.util.{Failure, Success}
 
@@ -69,6 +71,19 @@ class PostController @Inject()(val postService: PostService,
         Ok(Json.toJson(postJson))
 
       case None => NotFound(s"Post with ID $id not existed!")
+    }
+  }
+
+  def upload() = Action(parse.multipartFormData) { implicit request =>
+    request.body.file("image").map { uploadFile =>
+      val fileName = UUID.randomUUID().toString + "-" + uploadFile.filename
+      val path = Paths.get("public/images/thumbnail/", fileName)
+
+      Files.write(path, Files.readAllBytes(uploadFile.ref))
+
+      Ok("File uploaded")
+    }.getOrElse {
+      BadRequest("Something wrong")
     }
   }
 }
