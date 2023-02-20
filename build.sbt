@@ -15,5 +15,6 @@ lazy val root = (project in file("."))
       "org.scalikejdbc" %% "scalikejdbc-play-initializer" % "2.8.0-scalikejdbc-3.5",
       "mysql" % "mysql-connector-java" % "8.0.32",
       "org.skinny-framework" %% "skinny-orm" % "3.1.0",
+      "com.github.t3hnar" %% "scala-bcrypt" % "4.3.0"
     )
   )

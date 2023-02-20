@@ -11,5 +11,5 @@ trait PostRepository {
 
   def getPostByID(id: Long): Option[Post]
 
-  def addPost(post: Post): Try[PostID]
+  def createPost(post: Post): Try[PostID]
 }

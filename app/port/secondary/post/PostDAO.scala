@@ -31,7 +31,7 @@ object PostDAO extends SkinnyCRUDMapperWithId[PostID, Post]  {
 
   override def useExternalIdGenerator = true
 
-  override def generateId: PostID = PostID(Random.nextLong(1000000))
+  override def generateId: PostID = PostID(Random.nextLong(10000000))
 }
 
 

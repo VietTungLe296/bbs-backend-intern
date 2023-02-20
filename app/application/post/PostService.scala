@@ -6,7 +6,7 @@ import javax.inject.Inject
 import scala.util.Try
 
 class PostService @Inject()(val postRepository: PostRepository) {
-  def addPost(post: Post): Try[PostID] = postRepository.addPost(post)
+  def addPost(post: Post): Try[PostID] = postRepository.createPost(post)
 
   def getAllPostsPaginated(page: Int): List[Post] = postRepository.getAllPostsPaginated(page)
 

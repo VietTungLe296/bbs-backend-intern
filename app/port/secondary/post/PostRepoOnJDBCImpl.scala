@@ -7,7 +7,7 @@ import scalikejdbc.jodatime.JodaParameterBinderFactory.jodaDateTimeParameterBind
 import scala.util.{Success, Try}
 
 class PostRepoOnJDBCImpl extends PostRepository {
-  override def addPost(post: Post): Try[PostID] = {
+  override def createPost(post: Post): Try[PostID] = {
     DB localTx { implicit session =>
       val p = PostDAO.column
       val postID: Long = PostDAO.createWithNamedValues(
